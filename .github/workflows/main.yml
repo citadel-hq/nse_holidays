@@ -7,7 +7,8 @@ on:
     branches:
       - main
   schedule:
-    - cron:  '30 15 20-31 12 *'
+    - cron:  '0 15 * * 6'
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
       # Commit and push all changed files.
       - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
         # Only run on main branch push (e.g. after pull request merge).
-        if: contains(fromJson('["schedule", "pull_request"]'), github.event_name)
+        if: contains(fromJson('["schedule", "pull_request"]'), github.event_name) || github.event_name == 'workflow_dispatch'
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "shikharvaish28@users.noreply.github.com"
