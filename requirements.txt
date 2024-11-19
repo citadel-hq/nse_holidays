@@ -1,1 +1,2 @@
-nsepython==2.8
+nsepython~=2.8
+pandas~=2.2.3
