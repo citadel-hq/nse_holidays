@@ -15,7 +15,7 @@ def fetch_and_save_holidays():
 
         holidays_df = pd.DataFrame(holidays)
         holidays_df = holidays_df[['tradingDate']]
-        holidays_df.to_csv("holidays.csv", index=False)
+        holidays_df.to_csv("nse_holidays.csv", index=False, header=False)
         logging.info("Holidays saved to holidays.csv successfully")
 
     except ValueError as e:
