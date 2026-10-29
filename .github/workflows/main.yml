@@ -1,4 +1,4 @@
-name: Update Latest NSE holidays
+name: Update Latest NSE Holidays and Macro Events
 on:
   push:
     branches:
@@ -7,14 +7,14 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 15 * * 6'
+    - cron: '0 15 * * *'  # Daily at 20:30 IST (15:00 UTC)
   workflow_dispatch:  # This allows manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CI_COMMIT_MESSAGE: Updated Latest holidays in csv File
+      CI_COMMIT_MESSAGE: Update latest NSE holidays and macro events
       CI_COMMIT_AUTHOR: shikharvaish28
     steps:
       - uses: actions/checkout@v3
@@ -25,12 +25,12 @@ jobs:
       - run: python --version
       - run: pip install -r requirements.txt
       - run: python holidays.py
+      - run: python events.py
 
-      # Commit and push all changed files.
-      - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
+      # Commit and push all changed files if changes exist
+      - name: GIT Commit Build Artifacts
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "shikharvaish28@users.noreply.github.com"
           git add --all
-          git commit --all -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
+          git diff --staged --quiet || (git commit -m "${{ env.CI_COMMIT_MESSAGE }}" && git push)
