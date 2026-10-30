@@ -82,5 +82,8 @@ date,event,category,country,impact
 2026-11-04,ISM Non-Manufacturing Prices Paid,OTHER_HIGH_IMPACT,US,HIGH
 2026-11-04,US Fed FOMC Rate Decision,CENTRAL_BANK,US,HIGH
 2026-11-05,Initial Jobless Claims,LABOR_MARKET,US,HIGH
+2026-11-06,Average Hourly Earnings m/m,OTHER_HIGH_IMPACT,US,HIGH
+2026-11-06,Nonfarm Payrolls,LABOR_MARKET,US,HIGH
+2026-11-06,Unemployment Rate,CENTRAL_BANK,US,HIGH
 2026-12-04,RBI MPC Interest Rate Decision,CENTRAL_BANK,IN,HIGH
 2026-12-16,US Fed FOMC Rate Decision,CENTRAL_BANK,US,HIGH
